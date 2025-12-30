@@ -15,10 +15,10 @@
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</source>
+Copyright © 2018-2026 The XGamecoin developers</source>
         <translation>Copyright © 2009-2014 Les développeurs Bitcoin
 Copyright © 2012-2014 Les développeurs NovaCoin
-Copyright © 2014 Les développeurs XGamecoin</translation>
+Copyright © 2018-2026 Les développeurs XGamecoin</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -264,7 +264,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-58"/>
         <source>XGamecoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>L&apos;application XGamecoin va désormais se terminer afin de finaliser le processus de chiffrage. Merci de noter que le chiffrage du portefeuille ne garantit pas de se prémunir du vol via utilisation de malware, qui auraient pu infecter votre ordinateur. </translation>
+        <translation>l&apos;application XGamecoin va désormais se terminer afin de finaliser le processus de chiffrage. Merci de noter que le chiffrage du portefeuille ne garantit pas de se prémunir du vol via utilisation de malware, qui auraient pu infecter votre ordinateur. </translation>
     </message>
     <message>
         <location line="+13"/>
@@ -377,7 +377,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about XGamecoin</source>
+        <source>Show information About XGamecoin</source>
         <translation>Afficher des informations au sujet de XGamecoin</translation>
     </message>
     <message>

@@ -1229,7 +1229,11 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    {"walletbuilders.com", "node.walletbuilders.com"},
+	{"207.180.217.38", "207.180.217.38"},
+	{"167.86.67.25", "167.86.67.25"},	
+    {"xgame1.servegame.com", "xgame1.servegame.com"},
+    {"xgame2.servegame.com", "xgame2.servegame.com"},
+    {"xgame3.servegame.com", "xgame3.servegame.com"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1309,7 +1313,7 @@ void DumpAddresses()
     CAddrDB adb;
     adb.Write(addrman);
 
-    printf("Flushed %d addresses to peers.dat  %"PRId64"ms\n",
+    printf("Flushed %d addresses to peers.dat  %" PRId64 "ms\n",
            addrman.size(), GetTimeMillis() - nStart);
 }
 

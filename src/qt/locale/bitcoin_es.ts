@@ -15,10 +15,10 @@
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</source>
+Copyright © 2018-2026 The XGamecoin developers</source>
         <translation>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</translation>
+Copyright © 2018-2026 The XGamecoin developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -380,7 +380,7 @@ Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</t
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about XGamecoin</source>
+        <source>Show information About XGamecoin</source>
         <translation>Mostrar información sobre XGamecoin</translation>
     </message>
     <message>

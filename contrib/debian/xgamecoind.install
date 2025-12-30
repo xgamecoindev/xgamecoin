@@ -1,0 +1,2 @@
+debian/bin/xgamecoind usr/bin
+src/xgamecoind usr/lib/xgamecoin

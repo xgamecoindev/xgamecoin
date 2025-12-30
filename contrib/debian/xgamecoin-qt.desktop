@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=XGamecoin
+Comment=XGamecoin P2P Cryptocurrency
+Comment[fr]=XGamecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=XGamecoin, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/xgamecoin-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/xgamecoin;
+Categories=Office;

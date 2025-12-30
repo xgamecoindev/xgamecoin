@@ -1,10 +1,13 @@
 TEMPLATE = app
 TARGET = xgamecoin-qt
-VERSION = 1.0.7
+VERSION = 1.0.8
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
 CONFIG += no_include_pwd
 CONFIG += thread
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+lessThan(QT_MAJOR_VERSION, 5): CONFIG += static
+QMAKE_CXXFLAGS = -fpermissive
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
@@ -20,6 +23,19 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 # Dependency library locations can be customized with:
 #    BOOST_INCLUDE_PATH, BOOST_LIB_PATH, BDB_INCLUDE_PATH,
 #    BDB_LIB_PATH, OPENSSL_INCLUDE_PATH and OPENSSL_LIB_PATH respectively
+
+
+BOOST_LIB_SUFFIX=-mgw63-mt-s-1_58
+BOOST_INCLUDE_PATH=C:/deps/boost_1_58_0
+BOOST_LIB_PATH=C:/deps/boost_1_58_0/stage/lib
+BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
+BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
+OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.2n/include
+OPENSSL_LIB_PATH=C:/deps/openssl-1.0.2n
+MINIUPNPC_INCLUDE_PATH=C:/deps/
+MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
+QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
+QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
 
 OBJECTS_DIR = build
 MOC_DIR = build
@@ -44,8 +60,9 @@ QMAKE_LFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
 # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
 }
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
-win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
 win32:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
+lessThan(QT_MAJOR_VERSION, 5): win32: QMAKE_LFLAGS *= -static
+
 
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
@@ -99,7 +116,7 @@ SOURCES += src/txdb-leveldb.cpp
         QMAKE_RANLIB = $$replace(QMAKE_STRIP, strip, ranlib)
     }
     LIBS += -lshlwapi
-    genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libleveldb.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libmemenv.a
+    # genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libleveldb.a && $$QMAKE_RANLIB $$PWD/src/leveldb/libmemenv.a
 }
 genleveldb.target = $$PWD/src/leveldb/libleveldb.a
 genleveldb.depends = FORCE
@@ -224,6 +241,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/allocators.h \
     src/ui_interface.h \
     src/qt/rpcconsole.h \
+    src/qt/blockbrowser.h \
     src/version.h \
     src/netbase.h \
     src/clientversion.h \
@@ -241,6 +259,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/aboutdialog.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/bitcoinaddressvalidator.cpp \
+    src/qt/blockbrowser.cpp \	
     src/alert.cpp \
     src/version.cpp \
     src/sync.cpp \
@@ -323,6 +342,7 @@ FORMS += \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
     src/qt/forms/rpcconsole.ui \
+    src/qt/forms/blockbrowser.ui \
     src/qt/forms/optionsdialog.ui
 
 contains(USE_QRCODE, 1) {
@@ -357,12 +377,11 @@ OTHER_FILES += \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX = -mt
+    windows:BOOST_LIB_SUFFIX = -mgw63-mt-s-1_58
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
-    win32:BOOST_THREAD_LIB_SUFFIX = _win32$$BOOST_LIB_SUFFIX
-    else:BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
+    BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
 }
 
 isEmpty(BDB_LIB_PATH) {
@@ -399,8 +418,14 @@ windows:!contains(MINGW_THREAD_BUGFIX, 0) {
     QMAKE_LIBS_QT_ENTRY = -lmingwthrd $$QMAKE_LIBS_QT_ENTRY
 }
 
-macx:HEADERS += src/qt/macdockiconhandler.h
-macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
+!windows:!macx {
+    DEFINES += LINUX
+    LIBS += -lrt
+}
+
+macx:HEADERS += src/qt/macdockiconhandler.h src/qt/macnotificationhandler.h
+macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm src/qt/macnotificationhandler.mm
+
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = src/qt/res/icons/bitcoin.icns
@@ -423,11 +448,6 @@ contains(RELEASE, 1) {
         # Linux: turn dynamic linking back on for c/c++ runtime libraries
         LIBS += -Wl,-Bdynamic
     }
-}
-
-!windows:!macx {
-    DEFINES += LINUX
-    LIBS += -lrt -ldl
 }
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)

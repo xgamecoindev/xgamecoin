@@ -15,7 +15,7 @@
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</source>
+Copyright © 2018-2026 The XGamecoin developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -375,7 +375,7 @@ Ta proizvod vključuje softver razvit s strani projekta OpenSSL za uporabo v Ope
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about XGamecoin</source>
+        <source>Show information About XGamecoin</source>
         <translation>Pokaži informacije o XGamecoin</translation>
     </message>
     <message>

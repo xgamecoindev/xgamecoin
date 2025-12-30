@@ -299,6 +299,7 @@ std::string HelpMessage()
         "  -salvagewallet         " + _("Attempt to recover private keys from a corrupt wallet.dat") + "\n" +
         "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 2500, 0 = all)") + "\n" +
         "  -checklevel=<n>        " + _("How thorough the block verification is (0-6, default: 1)") + "\n" +
+        "  -splitblkfiles         " + _("Split blk0001.dat into files of maximum 512 MB each (default: 0)") + "\n" +
         "  -loadblock=<file>      " + _("Imports blocks from external blk000?.dat file") + "\n" +
 
         "\n" + _("Block creation options:") + "\n" +
@@ -726,7 +727,7 @@ bool AppInit2()
         printf("Shutdown requested. Exiting.\n");
         return false;
     }
-    printf(" block index %15"PRId64"ms\n", GetTimeMillis() - nStart);
+    printf(" block index %15" PRId64 "ms\n", GetTimeMillis() - nStart);
 
     if (GetBoolArg("-printblockindex") || GetBoolArg("-printblocktree"))
     {
@@ -827,7 +828,7 @@ bool AppInit2()
     }
 
     printf("%s", strErrors.str().c_str());
-    printf(" wallet      %15"PRId64"ms\n", GetTimeMillis() - nStart);
+    printf(" wallet      %15" PRId64 "ms\n", GetTimeMillis() - nStart);
 
     RegisterWallet(pwalletMain);
 
@@ -847,7 +848,7 @@ bool AppInit2()
         printf("Rescanning last %i blocks (from block %i)...\n", pindexBest->nHeight - pindexRescan->nHeight, pindexRescan->nHeight);
         nStart = GetTimeMillis();
         pwalletMain->ScanForWalletTransactions(pindexRescan, true);
-        printf(" rescan      %15"PRId64"ms\n", GetTimeMillis() - nStart);
+        printf(" rescan      %15" PRId64 "ms\n", GetTimeMillis() - nStart);
     }
 
     // ********************************************************* Step 9: import blocks
@@ -889,7 +890,7 @@ bool AppInit2()
             printf("Invalid or missing peers.dat; recreating\n");
     }
 
-    printf("Loaded %i addresses from peers.dat  %"PRId64"ms\n",
+    printf("Loaded %i addresses from peers.dat  %" PRId64 "ms\n",
            addrman.size(), GetTimeMillis() - nStart);
 
     // ********************************************************* Step 11: start node
@@ -900,11 +901,11 @@ bool AppInit2()
     RandAddSeedPerfmon();
 
     //// debug print
-    printf("mapBlockIndex.size() = %"PRIszu"\n",   mapBlockIndex.size());
+    printf("mapBlockIndex.size() = %" PRIszu "\n",   mapBlockIndex.size());
     printf("nBestHeight = %d\n",            nBestHeight);
-    printf("setKeyPool.size() = %"PRIszu"\n",      pwalletMain->setKeyPool.size());
-    printf("mapWallet.size() = %"PRIszu"\n",       pwalletMain->mapWallet.size());
-    printf("mapAddressBook.size() = %"PRIszu"\n",  pwalletMain->mapAddressBook.size());
+    printf("setKeyPool.size() = %" PRIszu "\n",      pwalletMain->setKeyPool.size());
+    printf("mapWallet.size() = %" PRIszu "\n",       pwalletMain->mapWallet.size());
+    printf("mapAddressBook.size() = %" PRIszu "\n",  pwalletMain->mapAddressBook.size());
 
     if (!NewThread(StartNode, NULL))
         InitError(_("Error: could not start node"));

@@ -15,7 +15,7 @@
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</source>
+Copyright © 2018-2026 The XGamecoin developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -378,7 +378,7 @@ Eric Young (eay@cryptsoft.com) y UPnP software escrito por Thomas Bernard.</tran
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about XGamecoin</source>
+        <source>Show information About XGamecoin</source>
         <translation type="unfinished"/>
     </message>
     <message>

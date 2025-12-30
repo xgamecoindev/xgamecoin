@@ -104,7 +104,7 @@ int64_t AmountFromValue(const Value& value)
     return nAmount;
 }
 
-Value ValueFromAmount(int64_t amount)
+Value ValueFromAmount(__int128 amount)
 {
     return (double)amount / (double)COIN;
 }
@@ -383,7 +383,7 @@ static string HTTPReply(int nStatus, const string& strMsg, bool keepalive)
             "HTTP/1.1 %d %s\r\n"
             "Date: %s\r\n"
             "Connection: %s\r\n"
-            "Content-Length: %"PRIszu"\r\n"
+            "Content-Length: %" PRIszu "\r\n"
             "Content-Type: application/json\r\n"
             "Server: xgamecoin-json-rpc/%s\r\n"
             "\r\n"

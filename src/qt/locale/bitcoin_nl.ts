@@ -15,7 +15,7 @@
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</source>
+Copyright © 2018-2026 The XGamecoin developers</source>
         <translation>Copyright © 2009-2014 De Bitcoin ontwikkelaars
 Copyright © 2012-2014 De NovaCoin ontwikkelaars
 Copyright © 2014 De XGamecoin ontwikkelaars</translation>
@@ -377,7 +377,7 @@ Dit product bevat software ontwikkeld door het OpenSSL Project voor gebruik in d
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about XGamecoin</source>
+        <source>Show information About XGamecoin</source>
         <translation>Toon informatie over XGamecoin</translation>
     </message>
     <message>

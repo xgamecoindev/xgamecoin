@@ -15,10 +15,10 @@
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</source>
+Copyright © 2018-2026 The XGamecoin developers</source>
         <translation>コピーライト © 2009-2014 The Bitcoin developers
 コピーライト © 2012-2014 The NovaCoin developers
-コピーライト © 2014 The XGamecoin developers</translation>
+コピーライト © 2018-2026 The XGamecoin developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -377,7 +377,7 @@ MIT/X11 ソフトウェア ライセンスの下で配布されています。�
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about XGamecoin</source>
+        <source>Show information About XGamecoin</source>
         <translation>ブラックコインの情報を表示</translation>
     </message>
     <message>

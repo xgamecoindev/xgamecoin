@@ -15,10 +15,10 @@
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The XGamecoin developers</source>
+Copyright © 2018-2026 The XGamecoin developers</source>
         <translation>版权所有 © 2009-2014 比特币Bitcoin开发组
 版权所有 © 2012-2014 新星币Novacoin开发组
-版权所有 © 2014 黑币XGamecoin开发组</translation>
+版权所有 © 2018-2026 黑币XGamecoin开发组</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -377,7 +377,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about XGamecoin</source>
+        <source>Show information About XGamecoin</source>
         <translation>显示关于黑币的信息</translation>
     </message>
     <message>
